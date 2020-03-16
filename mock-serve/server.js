@@ -1,0 +1,14 @@
+const JsonServer = require('json-server')
+const data = require('./db')
+const server = JsonServer.create()
+const router = JsonServer.router(data)
+const middleware = JsonServer.defaults()
+server.use(middleware)
+server.use(router)
+server.use(JsonServer.bodyParser)
+server.listen({
+  host:'127.0.0.1',
+  port:'8888'
+},()=>{
+  console.log('运行成功');
+})
