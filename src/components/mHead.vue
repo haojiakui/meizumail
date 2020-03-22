@@ -168,10 +168,10 @@
     methods:{
       //想要这个方法自动执行，需要在mounted生命周期里执行
       async getNavData(){ //async:异步执行函数
-        console.log('向localhost8888发送请求...');
+
         const {data} = await axios.get('/api/nav')  // 当请求成功后将数据赋值给data
         this.navData = data
-        console.log('请求成功',this.navData);
+
       },
       showChildren(item){
         //获取悬浮列表的内容
