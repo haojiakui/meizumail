@@ -51,6 +51,7 @@
     width: 100%;
     background: white;
     position: relative;
+
     .header-wrapper{
       width:1240px;
       margin: 0 auto;

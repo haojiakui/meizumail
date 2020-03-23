@@ -3,7 +3,7 @@
 <!--    图文-->
    <ul :style="listWrapper" class="swiper-ul" @transitionend = 'setDuration'>
      <li class="swiper-list" v-for="(item,index) in data " :key = 'item.imgUrl'>
-       <a :href="item.href">
+       <a :href="item.href" class="imgbox">
          <img :src="item.imgUrl" :style="swiperSize" alt="">
        </a>
      </li>
@@ -113,12 +113,16 @@
   height: 500px;
   position: relative;
   overflow: hidden;
+
   .swiper-ul{
     font-size: 0;
+
   }
   /*左边切换按钮*/
   .swiper-list{
     display: inline-block;
+
+
   }
   .swiper-btns{
     position: absolute;
