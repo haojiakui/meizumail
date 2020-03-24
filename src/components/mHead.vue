@@ -16,9 +16,8 @@
         <li  v-for="(item ,index) of navData "
              :key="index"
              @mouseenter="showChildren(item)"
-
         >
-          <a class="nav-item" href="">{{item.name}}</a>
+          <a class="nav-item" href="javascript:;" @click="goTOCategory">{{item.name}}</a>
         </li>
 `
       </ul>
@@ -194,6 +193,12 @@
           }
           )
         },timeout)
+      },
+    //  添加进入子页面事件
+      goTOCategory(){
+        this.$router.push({
+          name:'Category'
+        })
       }
     },
     mounted() {

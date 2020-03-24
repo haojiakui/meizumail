@@ -1,8 +1,12 @@
 # meizu
 
-## Project setup
+## First,  cd 'mock-serve' and :
+```angular2
+npm install json-server --save
 ```
-npm install
+## then run : 
+```
+ node server
 ```
 
 ### Compiles and hot-reloads for development

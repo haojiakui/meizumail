@@ -7,6 +7,10 @@ const routes = [
   {
     path:'/',
     component:()=> import('../views/index')
+  },{
+    path:'/Category/:id?',
+    name:'Category', //大写
+    component:()=> import('../views/category')
   }
 ]
 
