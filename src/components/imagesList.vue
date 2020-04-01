@@ -1,5 +1,5 @@
 <template >
-  <div class="images-wrapper">
+  <div :class="{'images-wrapper':type==='small','images-wrapper_big ': type=== 'big'}">
     <img class="img" :src="data[activeIndex]" alt="">
     <ul  class="imgs">
       <li v-for="(item,index) in data"
@@ -67,6 +67,35 @@
         img{
           width: 40px;
           height: 40px;
+
+        }
+      }
+    }
+  }
+/*  修改*/
+  .images-wrapper_big{
+    text-align: center;
+    .img{
+      height: 375px;
+      margin : 20px auto;
+    }
+    .imgs{
+      overflow: hidden;
+      margin-top: 10px;
+      .imgs-item{
+        display: inline-block;
+        height: 75px;
+        width: 75px;
+        border-radius: 4px;
+        margin: 0 5px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &.active{
+          border-color: #dcdcdc;
+        }
+        img{
+          width: 75px;
+          height: 75px;
 
         }
       }
