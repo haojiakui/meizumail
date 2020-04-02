@@ -99,12 +99,12 @@
       async getPhoneSaleData(){
         const {data} = await axios.get('/api/phoneSale')
         this.phoneSaleData = data
-        console.log(22);
+
       },
       async getSmartRecommendData(){
         const {data} = await axios.get('/api/smartSale')
         this.smartRecommendData = data
-        console.log(11);
+
       },
       async getPhoneAdData(){
         const {data} = await axios.get('/api/phoneRecommend')

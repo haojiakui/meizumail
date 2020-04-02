@@ -3,7 +3,9 @@
   <ul class="clearfix" v-if="data.length > 0">
     <li v-for="(item,index) in data" :key="index"
         :class="{'last-child': (index + 1) % 4 === 0}"
-        class="goods-list  ">
+        class="goods-list"
+        @click="clickItem(item)"
+    >
       <a :href="item.href">
         <images-list :data="item.colorImageUrls"></images-list>
         <div class="goods-name">{{item.goodsName}}</div>
@@ -44,6 +46,12 @@
         default() {
           return [];
         }
+      }
+    },
+    // 由于组件具有复用性，所以对组件添加事件不能直接跳转,应当将这个事件发射给父级组件处理
+    methods:{
+      clickItem(item){
+        this.$emit('clickItem',item)
       }
     }
   }

@@ -13,11 +13,9 @@
       <filter-box :data="filterList" @filter = 'getQuery' ></filter-box>
       <sort-box @getKey = 'getSortKey' @getStock = 'getSortStork'></sort-box>
       <!--    商品条件-->
-      <category-list :data = 'categoryListData'></category-list>
-      <recomment-list :data="recommendListData"></recomment-list>
+      <category-list :data = 'categoryListData' @clickItem="goDetail"></category-list>
+      <recomment-list :data="recommendListData" ></recomment-list>
     </div>
-
-    <!--    主要分类内容-->
     <m-footer></m-footer>
   </div>
 </template>
@@ -47,6 +45,15 @@
       }
     },
     methods:{
+      //父组件接收子组件传递过来的值
+      goDetail(item){
+       this.$router.push({
+          name:'Detail',
+         params:{
+            id: item.id
+         }
+       })
+      },
       //子组件：推荐商品页
      async getRecommendListData(){
         const {data} = await axios.get('/api/smartSale')
@@ -68,7 +75,6 @@
        this.currentQuery = val
         this.sortGoods()
       },
-
       getSortKey(key){
        this.currentKey = key
         this.sortGoods()

@@ -11,6 +11,11 @@ const routes = [
     path:'/Category/:id?',
     name:'Category', //大写
     component:()=> import('../views/category')
+  },
+  {
+    path:'/detail/:id', //id是必传的
+    name:'Detail', //大写
+    component:()=> import('../views/detail')
   }
 ]
 

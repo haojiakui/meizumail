@@ -20,3 +20,52 @@ html{
     display: block;
     clear: both;
 }
+/*封装购买按钮样式*/
+.btn{
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    min-width: 58px;
+    min-height: 34px;
+    line-height: 34px;
+    transition: all .3s;
+    padding: 0 20px;
+    /*input框内无法被选中*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.success{
+    color:#FFF;
+    border-color:#00c3f5;
+    background-color:#00c3f5;
+}
+.success:hover{
+    border-color:#40D2F8;
+    background-color:#40D2F8;
+}
+.danger{
+    color: #fff;
+    background: #f66567;
+    border-color: #f66567;
+}
+.danger:hover{
+    background: #fe7476;
+    border-color: #fe7476;
+}
+.cancel{
+    color: #999;
+    background: #efefef;
+    border-color: #efefef;
+}
