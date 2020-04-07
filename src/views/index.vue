@@ -32,6 +32,7 @@
         <goods-list :data="smartRecommendData"></goods-list>
       </div>
     </div>
+
     <m-footer></m-footer>
   </div>
 </template>
@@ -43,6 +44,7 @@
   import goodsList from '../components/goodsList'
   import adList from '../components/adList'
   import mFooter from '../components/mFooter'
+
   export default {
     name: 'index',
     components:{
@@ -50,6 +52,7 @@
       swiper,
       goodsList,
       adList,
+
       mFooter
     },
     data(){

@@ -32,15 +32,16 @@
           <div>
             <span class="prop-name" >数<span class="prop-space"></span>量:</span>
             <div class="clearfix prop-number">
-              <input type="text" class="fl prop-input">
-              <div class="fl change-box">
-                <div class="change-value">+</div><div class="change-value">-</div>
+              <input type="number" class="fl prop-input" v-model="puchrchaseQuantity" >
+              <div class="fl change-box" >
+                <div class="change-value"   @click="increase" >+</div>
+                <div class="change-value"  @click="decrease">-</div>
               </div>
             </div>
           </div>
            <div class="prop-buy">
-             <a href="javascript:;" class="btn danger mr20">立即购买</a>
-             <a href="javascript:;" class="btn success">加入购物车</a>
+             <a href="javascript:;" class="btn danger mr20" @click="purchase">立即购买</a>
+             <a href="javascript:;" class="btn success" @click="addCart">加入购物车</a>
            </div>
         </div>
       </div>
@@ -69,19 +70,42 @@
     },
     data(){
       return {
-        infoData: {} //用于存储获取到的商品详情
+        infoData: {} ,//用于存储获取到的商品详情
+        puchrchaseQuantity: 1
       }
     },
+  mounted() {
+    this.getDetail(this.$route.params.id) //这个id通过路由的组件的params获取
+  },
     methods:{
       async getDetail(id){
         const {data} = await axios(`/api/categoryList/${id}`);
         this.infoData = data
-        console.log(this.infoData);
+      },
+      //  购物车加减按钮事件
+      increase(){
+        this.puchrchaseQuantity = parseInt(this.puchrchaseQuantity) + 1   // 防止在输入状态下值由数字转为字符串
+      },
+      decrease(){
+       if(this.puchrchaseQuantity > 1){ //防止成为负数
+         this.puchrchaseQuantity = parseInt(this.puchrchaseQuantity) - 1
+       }
+      },
+    //  加入购物车： 本质上向mutations发射数据，然后由mutations负责处理
+      addCart(){
+        this.$store.commit('addShopCart', {
+          data:this.infoData,//购物的内容
+          num:parseInt(this.puchrchaseQuantity) //数量
+        })
+      },
+      //立即购买按钮
+      purchase(){
+        //要跳转到购物页面 ，先放置
+        this.$store.commit('addShopCart', {
+          data:this.infoData,//购物的内容
+          num:parseInt(this.puchrchaseQuantity) //数量
+        })
       }
-    },
-    mounted() {
-      console.log(this.$route);
-      this.getDetail(this.$route.params.id) //这个id通过路由的组件的params获取
     }
   }
 </script>

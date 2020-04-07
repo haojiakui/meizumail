@@ -1,6 +1,5 @@
 <template>
 <div>
-
   <div id="app">
 <router-view></router-view>
   </div>
@@ -12,9 +11,10 @@
 </style>
 <script>
   import index  from './views/index'
+
   export default {
     comments:{
-      index
+      index,
     }
   }
 </script>
