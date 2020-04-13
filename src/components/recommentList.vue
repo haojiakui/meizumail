@@ -102,7 +102,6 @@
     /*ul样式*/
     .goods-list{
       overflow: hidden ;
-      border: 1px solid red;
       float: left;
       width: 220px;
       margin: 0 15px;

@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-wrapper clearfix">
 <!--      right-->
-      <div class="header-logo fl"></div>
+      <div class="header-logo fl" @click="goTOIndex"></div>
       <div class="header-cart fr">
         <span class="iconfont">&#xe607;</span>
       </div>
@@ -59,6 +59,7 @@
         height: 26px;
         margin:  28px  0;
         background: url("../assets/images/logo.png") no-repeat center;
+        cursor: pointer;
       }
       .header-cart,.header-user{
         padding:29px 10px 0 20px ;
@@ -166,6 +167,9 @@
     },
 
     methods:{
+      goTOIndex(){
+        this.$router.push('/')
+      },
       //想要这个方法自动执行，需要在mounted生命周期里执行
       async getNavData(){ //async:异步执行函数
 

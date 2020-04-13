@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path:'/',
+    name:'Index',
     component:()=> import('../views/index')
   },{
     path:'/Category/:id?',
@@ -16,6 +17,11 @@ const routes = [
     path:'/detail/:id', //id是必传的
     name:'Detail', //大写
     component:()=> import('../views/detail')
+  },
+  {
+    path:'/shopcart', //id是必传的
+    name:'shopcart', //大写
+    component:()=> import('../views/shopCart')
   }
 ]
 

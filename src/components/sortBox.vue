@@ -58,9 +58,7 @@
 <style lang="less" scoped>
 .sort-box{
   margin: 30px auto 20px;
-
   color: #666;
-  border: 1px solid red;
   .sort-order{
     a{
       margin-right: 50px;

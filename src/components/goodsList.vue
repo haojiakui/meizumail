@@ -1,5 +1,5 @@
 <template>
-  <ul class="clearfix"  >
+  <ul class="clearfix  getDemo"  >
     <li v-for="(item,index) in data" :key="index"
         :class="{'last-child': (index + 1) % 4 === 0}"
         class="goods-list  ">
@@ -44,6 +44,7 @@
   margin-right: 9px;
   overflow: hidden;
   text-align: center;
+
 
   &:hover{
     box-shadow: 0 15px 30px rgba(0,0,0,.1);

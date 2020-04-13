@@ -97,7 +97,9 @@
           data:this.infoData,//购物的内容
           num:parseInt(this.puchrchaseQuantity) //数量
         })
+      //  加入购物车还要有弹框提示
       },
+
       //立即购买按钮
       purchase(){
         //要跳转到购物页面 ，先放置
@@ -105,7 +107,15 @@
           data:this.infoData,//购物的内容
           num:parseInt(this.puchrchaseQuantity) //数量
         })
-      }
+        this.goToCart()
+      },
+      //进入购物车
+      goToCart(){
+        this.$router.push({
+          name:'shopcart'
+        })
+
+      },
     }
   }
 </script>

@@ -68,6 +68,7 @@
   background: #fff;
   padding: 48px 0 20px;
   border: 1px solid #efefef;
+  margin-top: 20px;
   .footer-wrapper{
     width: 1240px;
     margin:  0 auto;

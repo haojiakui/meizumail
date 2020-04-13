@@ -35,7 +35,6 @@
     },
     methods:{
       changeImage(index){
-        console.log('你点击的是',index);
         this.activeIndex = index
       }
     }

@@ -1,4 +1,5 @@
 <template>
+<!--  渲染问题，样式问题-->
   <div class="clearfix">
 <!--    左-->
     <div class="fl ad-left">
