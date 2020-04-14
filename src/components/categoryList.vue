@@ -1,5 +1,6 @@
 <template>
   <div>
+<!--    data.length > 0-->
   <ul class="clearfix" v-if="data.length > 0">
     <li v-for="(item,index) in data" :key="index"
         :class="{'last-child': (index + 1) % 4 === 0}"
@@ -18,7 +19,7 @@
     </li>
   </ul>
 <!--    如果没有数据显示的dom结构 -->
-    <div class="clearfix empty" v-else>
+    <div v-else class="clearfix empty" >
       <div class="fl empty-bg"></div>
       <div class="fr empty-desc">
         <div class="title">抱歉没有找到相关商品</div>

@@ -72,7 +72,19 @@
           </div>
         </div>
     </div>
+
+
+
+
+    <v-dialog
+            :show ="dialogShow"  @changeShow = 'closeShow'
+            title = "提示" :width = 450 :height = 120
+            @confirm = "confrimdelete"
+    >
+      <div style="height: 120px;line-height: 120px">您确定要删除么</div>
+    </v-dialog>
     <m-footer></m-footer>
+
   </div>
 
 </template>
@@ -80,12 +92,20 @@
 <script>
   import mHead from '../components/mHead'
   import mFooter from '../components/mFooter'
+
+  import vDialog from '../components/vdialog'
   import { mapMutations ,mapGetters } from 'vuex' //引入辅助函数用于提交  按钮增减数量
   // import { mapGetters } from 'vuex'
   export default {                    //用于mapGettters 判断是否为全选状态  在computed下使用
     name: 'shopCart',
     components:{
-      mHead,mFooter
+      mHead,mFooter , vDialog
+    },
+    data(){
+      return {
+        dialogShow: false,
+        currentId:null //点击删除目标商品时的临时存放的值
+      }
     },
   //  组件想要拿到购物车的数据，需要使用计算属性调用
     computed:{
@@ -97,8 +117,6 @@
         'checkGoodsTotal',//单个商品数量
         'checkedGoodsPrice',//单个商品总价
         'shopCartTotal',//选中商品的总价
-
-
       ])
     },
     methods:{
@@ -124,9 +142,10 @@
      },
       //移除某单个购物商品
       delGoods(id){
-        this.DEL_SHOPCART(id)
-      }
-      ,
+        // 要想弹框，改变dialogShow的值
+        this.dialogShow = true
+        this.currentId = id
+      } ,
     //  点击改变选中状态，并在state中改变check状态
       checkedGoods(id){
         this.CHECK_GOODS(id)
@@ -135,6 +154,16 @@
       checkedAllGoods(){
         this.CHECK_ALL_GOODS(this.isAllChecked)
         console.log(`这是问题，${this.isAllChecked}`);
+      },
+      //接受子组件传递过来的值，(点击弹框的关闭按钮，隐藏)
+      closeShow(con){
+        this.dialogShow = con
+      },
+      //接受子组件传递过来的值，(点击弹框的确定按钮，删除商品项)
+      confrimdelete(){
+        this.DEL_SHOPCART(this.currentId)
+      //  由于这是一个公用组件，找不到商品id 所以将这个id存一个临时值，再调用这个id
+        this.dialogShow = false //删除后将这个框隐藏掉
       }
     },
   }

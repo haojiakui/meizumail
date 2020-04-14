@@ -54,6 +54,15 @@
       </div>
 <!--      详情-->
     </div>
+    <v-dialog
+            :show.sync="dialogShow" :confirm-btn-show="false" :cancel-btn-show="false"
+            :width="300" :height="150"  @changeShow = 'closeShow'
+    >
+      <div>
+        <i class="iconfont icon-check-circle add-success"></i>成功加入购物车 <br>
+        <a href="javascript:;"   class="go-shopcart" @click="goToCart">进入购物车</a>
+      </div>
+    </v-dialog>
     <my-footer></my-footer>
   </div>
 </template>
@@ -62,16 +71,18 @@
   import myHeader from '../components/mHead'
   import myFooter from '../components/mFooter'
   import imagesList from '../components/imagesList'
+  import vDialog  from '../components/vdialog'
   import axios from 'axios'
   export default {
     name: 'detail',
     components:{
-      myHeader,myFooter,imagesList
+      myHeader,myFooter,imagesList,vDialog
     },
     data(){
       return {
         infoData: {} ,//用于存储获取到的商品详情
-        puchrchaseQuantity: 1
+        puchrchaseQuantity: 1,
+        dialogShow : false //弹框显示
       }
     },
   mounted() {
@@ -93,11 +104,14 @@
       },
     //  加入购物车： 本质上向mutations发射数据，然后由mutations负责处理
       addCart(){
+        console.log(11);
         this.$store.commit('addShopCart', {
           data:this.infoData,//购物的内容
           num:parseInt(this.puchrchaseQuantity) //数量
         })
       //  加入购物车还要有弹框提示
+        this.dialogShow = true
+        console.log(this.dialogShow);
       },
 
       //立即购买按钮
@@ -114,8 +128,10 @@
         this.$router.push({
           name:'shopcart'
         })
-
       },
+      closeShow(con){
+        this.dialogShow = con
+      }
     }
   }
 </script>
@@ -240,5 +256,15 @@
   }
   .detail-images2{
     width: 1240px;
+  }
+
+  .add-success{
+    color: #00c3f5;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .go-shopcart{
+    color:#00c3f5;
+    text-decoration: underline;
   }
 </style>
