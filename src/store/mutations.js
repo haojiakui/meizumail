@@ -52,6 +52,9 @@ const mutations = {
         state.shopCartData.splice(index,1)//将这条数据删除
       }
     })
+  },
+  REMOVE_GOODS(state ){
+      state.shopCartData = state.shopCartData.filter(item=> !item.checked)
   }
 
 

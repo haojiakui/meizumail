@@ -1,6 +1,6 @@
 <template>
   <div>
-<!--    data.length > 0-->
+
   <ul class="clearfix" v-if="data.length > 0">
     <li v-for="(item,index) in data" :key="index"
         :class="{'last-child': (index + 1) % 4 === 0}"

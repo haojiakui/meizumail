@@ -203,10 +203,10 @@
         this.$router.push({
           name:'Category'
         })
+
       }
     },
     mounted() {
-
       this.getNavData() //生命周期函数要调用methods里方法，需要加上this关键字
     }
   }

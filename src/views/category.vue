@@ -10,7 +10,7 @@
         <span class="arrow">></span>
         <span class="last-bread">手机</span>
       </div>
-      <filter-box :data="filterList" @filter = 'getQuery' ></filter-box>
+      <filter-box :data="filterListData" @filter = 'getResult' ></filter-box>
       <sort-box @getKey = 'getSortKey' @getStock = 'getSortStork'></sort-box>
       <!--    商品条件-->
       <category-list :data = 'categoryListData' @clickItem="goDetail"></category-list>
@@ -36,7 +36,7 @@
     data(){
       return {
         categoryListData:[],
-        filterList : [],
+        filterListData : [],
         categoryListCopy:[],
         currentQuery:null,
         currentStork:null,
@@ -68,12 +68,21 @@
       },
       async getFilterListData(){
         const {data} = await axios.get('/api/queryList')
-        this.filterList = data
+        this.filterListData = data
       },
     //  接收子组件传递来的数据
-      getQuery(val){
-       this.currentQuery = val
-        this.sortGoods()
+      getResult(val){
+         this.categoryListData = [].concat(this.categoryListCopy)
+        Object.keys(val).forEach(key=>{
+          if(val[key]){
+            this.categoryListData = this.categoryListData.filter(item=>{
+              return item.features.indexOf(val[key])>= 0
+            })
+          }
+        })
+        // this.currentQuery = val
+        // // console.log('父组件的currentquery', this.currentQuery);
+        // this.sortGoods()
       },
       getSortKey(key){
        this.currentKey = key
@@ -87,7 +96,7 @@
         this.categoryListCopy = [].concat(this.categoryListCopy)
         if(this.currentQuery){
           // console.log(Object.keys(val));//将接收到的对象的key转换成数组
-          Object.keys(this.currentQuery).forEach((key)=>{
+          Object.keys(this.currentQuery).forEach( key =>{
             if(this.currentQuery[key]){
               this.categoryListData = this.categoryListData.filter((item)=>{
                 return  item.features.indexOf(val[key]) >= 0
@@ -133,7 +142,6 @@
 .category-wrapper{
   width: 1240px;
   margin: 0 auto;
-
 }
 .bread{
   height: 40px;line-height: 40px;

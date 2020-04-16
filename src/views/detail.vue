@@ -104,14 +104,14 @@
       },
     //  加入购物车： 本质上向mutations发射数据，然后由mutations负责处理
       addCart(){
-        console.log(11);
+
         this.$store.commit('addShopCart', {
           data:this.infoData,//购物的内容
           num:parseInt(this.puchrchaseQuantity) //数量
         })
       //  加入购物车还要有弹框提示
         this.dialogShow = true
-        console.log(this.dialogShow);
+
       },
 
       //立即购买按钮

@@ -74,3 +74,6 @@ html{
     background: #f6f6f6;
     border-color: #f6f6f6;
 }
+label,input[type=checkbox]{
+    cursor: pointer;
+}

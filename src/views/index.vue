@@ -23,12 +23,13 @@
       </div>
       <div class="sale">
         <h3 class="title">手机</h3>
-        <ad-list :data="phoneAdData"></ad-list>
+        <add-list :data="phoneAdData"></add-list>
         <goods-list :data="phoneSaleData"></goods-list>
       </div>
+
       <div class="sale">
-        <h3 class="title">配件</h3>
-        <ad-list :data="smartAdData"></ad-list>
+        <h3 class="title">智能配件</h3>
+        <add-list :data="smartAdData"></add-list>
         <goods-list :data="smartRecommendData"></goods-list>
       </div>
     </div>
@@ -42,6 +43,7 @@
   import swiper from '../components/swiper'
   import axios from 'axios' //导入axios
   import goodsList from '../components/goodsList'
+  import addList from '../components/addList'
   import adList from '../components/adList'
   import mFooter from '../components/mFooter'
 
@@ -52,8 +54,8 @@
       swiper,
       goodsList,
       adList,
-
-      mFooter
+      mFooter,
+      addList
     },
     data(){
       return {
@@ -107,17 +109,14 @@
       async getSmartRecommendData(){
         const {data} = await axios.get('/api/smartSale')
         this.smartRecommendData = data
-
       },
       async getPhoneAdData(){
         const {data} = await axios.get('/api/phoneRecommend')
         this.phoneAdData = data
-
       },
       async getSmartAdData(){
         const {data} = await axios.get('/api/smartRecommend')
         this.smartAdData = data
-
       }
     }
   }

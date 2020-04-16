@@ -57,7 +57,7 @@
         <div class="fr">
 <!--          右边-->
           <span>已优惠 <span class="footer-number red">{{0.0}}</span>元，合计(不含运费)<span class="footer-number red footer-total">￥{{checkedGoodsPrice}}</span>  </span>
-          <a href="javascript:;" class="btn success" :class="{'cancel':checkGoodsTotal<=0}">去结算</a>
+          <a href="javascript:;" class="btn success" :class="{'cancel':checkGoodsTotal<=0}"  @click="goToOrder">去结算</a>
         </div>
       </div>
 <!--      购物车底部结算列表项-->
@@ -164,6 +164,11 @@
         this.DEL_SHOPCART(this.currentId)
       //  由于这是一个公用组件，找不到商品id 所以将这个id存一个临时值，再调用这个id
         this.dialogShow = false //删除后将这个框隐藏掉
+      },
+      goToOrder(){
+        this.$router.push({
+          name:'Order'
+        })
       }
     },
   }
